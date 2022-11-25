@@ -25,7 +25,7 @@
 					<a href="cart.php" class = "btn btn-secondary">
 						<i class="fa-solid fa-cart-shopping"></i>Cart
 						<span class="badge badge-light">
-                        	<?php echo (isset($_SESSION['totalQuantity']) ? $_SESSION['totalQuantity'] : "0"); ?>
+							<?php echo (isset($_SESSION['totalQuantity']) ? $_SESSION['totalQuantity'] : "0"); ?>
                     	</span>
 					</a>
 				</div>
@@ -45,8 +45,17 @@
                                 	<a class="add-to-cart" href="details.php?id=<?php echo $arrProductsKey; ?>"><i class="fa-solid fa-cart-plus mx-1"></i>Add to Cart</a>
                         	</div>
                             	<div class="product-content">
-                                	<h4><?php echo $arrProducts[$arrProductsKey]['name'];?><span class="badge badge-secondary mx-1"><?php echo $arrProducts[$arrProductsKey]['price'];?></span></h4>
+                                	<h4><?php echo $arrProducts[$arrProductsKey]['name'];?><span class="badge badge-secondary mx-1">₱ <?php echo $arrProducts[$arrProductsKey]['price'];?></span></h4>
                             	</div>
+
+								<?php
+								$_SESSION['productArr'][$arrProductsKey]['name'] = $arrProducts[$arrProductsKey]['name'];
+								$_SESSION['productArr'][$arrProductsKey]['description'] = $arrProducts[$arrProductsKey]['description'];
+								$_SESSION['productArr'][$arrProductsKey]['price'] = $arrProducts[$arrProductsKey]['price'];
+								$_SESSION['productArr'][$arrProductsKey]['photo1'] = $arrProducts[$arrProductsKey]['photo1'];
+								$_SESSION['productArr'][$arrProductsKey]['photo2'] = $arrProducts[$arrProductsKey]['photo2'];
+
+								?>
                     	</div>
             	</div>
         	<?php endforeach;  ?>  
